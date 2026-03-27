@@ -1,15 +1,19 @@
 class Solution {
+    public int path( int row, int col, Integer m ,Integer n,int dp[][]){
+        if(col>=n||row>=m ) return 0;
+        if(row==m-1 && col==n-1) return 1;
+        if(dp[row][col]!=-1) return dp[row][col];
+        int rightWay=path(row,col+1,m,n,dp);
+        int downWay=path(row+1,col,m,n,dp);
+        return dp[row][col]=rightWay+downWay;
+    }
     public int uniquePaths(int m, int n) {
-        // You must move down exactly m − 1 time
-        // You must move right exactly n − 1 times
-        // (m−1)+(n−1)=m+n−2
-        // unique path=(m+n-2)!/(m-1)!(n-1)!
-        long N = m + n - 2;
-        long r = Math.min(m - 1, n - 1);
-        long res = 1;
-        for (int i= 1; i <= r; i++) {
-            res =res * (N - r + i) / i;
+        int dp[][]=new int[m][n];
+        for( int i=0;i<m;i++){
+            for( int j=0;j<n;j++){
+                dp[i][j]=-1;
+            }
         }
-        return (int) res;
+        return path(0,0,m,n,dp);
     }
 }
