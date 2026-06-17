@@ -1,19 +1,18 @@
 class Solution {
     public int lengthOfLongestSubstring(String s) {
+        //  use sliding window
+        int l=0;
+        int max=0;
         Set<Character> set=new HashSet<>();
-        // int len=0;
-        int maxlen=0;
-        int left=0;
-        for( int right=0;right<s.length();right++){
-            //ager set m new right already hai to left se kam kar to lenght ko or set se nikal do right ko
-            while(set.contains(s.charAt(right))){
-            set.remove(s.charAt(left));
-            left++;
+        for( int r=0;r<s.length();r++){
+            while(set.contains(s.charAt(r))){
+                set.remove(s.charAt(l));
+                l++;
             }
-            //right ko badate jao jabtak dublicate nhi ata
-            set.add(s.charAt(right));
-            maxlen=Math.max(maxlen,right-left+1);
+            set.add(s.charAt(r));
+            max=Math.max(max,r-l+1);
         }
-        return maxlen;
+        return max ;
+
     }
 }
