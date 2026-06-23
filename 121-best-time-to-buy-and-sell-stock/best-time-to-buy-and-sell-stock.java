@@ -1,9 +1,9 @@
 class Solution {
-    public int maxProfit(int[]  nums) {
-        int min=nums[0];
+    public int maxProfit(int[] nums) {
         int max=0;
+        int min=nums[0];
         for( int i=1;i< nums.length;i++){
-            if( nums[i]<min){
+            if(nums[i]< min){
                 min=nums[i];
             }
             else{
