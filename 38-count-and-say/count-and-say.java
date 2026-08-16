@@ -1,0 +1,33 @@
+class Solution {
+    public String countAndSay(int n) {
+
+        String result = "1";
+
+        for (int k = 1; k < n; k++) {
+
+            String next = "";
+
+            int i = 0;
+
+            while (i < result.length()) {
+
+                char ch = result.charAt(i);
+                int count = 0;
+
+                while (i < result.length() &&
+                       result.charAt(i) == ch) {
+
+                    count++;
+                    i++;
+                }
+
+                next += count;
+                next += ch;
+            }
+
+            result = next;
+        }
+
+        return result;
+    }
+}
