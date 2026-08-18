@@ -10,30 +10,24 @@
  */
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        // base case
-        if(head==null) return null;
-       // first count size
-       ListNode temp=head;
-       int size=0;
-       while( temp!=null){
-        size++;
-        temp=temp.next;
-       }
-        //fromula idx=size-n+1;
-        int idx=size-n+1;
-        // base case 
-        if (idx == 1) {
-            return head.next;
-        }
-        //   set temp again to head
-        temp=head;
-        //    travel to just beforre to that idx
-        for( int i=1;i<idx-1;i++){
+        if( head==null) return null;
+        int size=0;
+        ListNode temp= head;
+        while(temp!= null){
+            size++;
             temp=temp.next;
         }
-        if( temp.next!=null){
+        int dlt=size-n+1;
+        temp=head;
+        if (dlt == 1) {
+            return head.next;
+        }
+        for( int i=1;i<dlt-1;i++){
+            temp=temp.next;
+        }
+        if(temp.next!=null){
             temp.next=temp.next.next;
         }
         return head;
-    }
+    }  
 }
